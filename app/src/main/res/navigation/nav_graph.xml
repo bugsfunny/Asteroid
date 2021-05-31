@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/asteroidListFragment">
+
+    <fragment
+        android:id="@+id/asteroidListFragment"
+        android:name="com.goodayedi.asteroid.ui.AsteroidListFragment"
+        android:label="fragment_asteroid_list"
+        tools:layout="@layout/fragment_asteroid_list" >
+        <action
+            android:id="@+id/action_asteroidListFragment_to_asteroidDetailFragment"
+            app:destination="@id/asteroidDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/asteroidDetailFragment"
+        android:name="com.goodayedi.asteroid.ui.AsteroidDetailFragment"
+        android:label="fragment_asteroid_detail"
+        tools:layout="@layout/fragment_asteroid_detail" />
+</navigation>
