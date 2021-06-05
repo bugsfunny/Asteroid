@@ -11,28 +11,50 @@
             type="com.goodayedi.asteroid.ui.AsteroidViewModel" />
     </data>
 
-    <LinearLayout
-        android:background="@color/black"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:pictureOfTheDay="@{viewModel.pictureOfTheDay}"
+            tools:src="@drawable/placeholder_picture_of_day" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment" />
+            android:background="@color/text_background"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{viewModel.pictureOfTheDay.title}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/hello_blank_fragment" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/asteroidList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            app:listData="@{viewModel.asteroids}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:listData="@{viewModel.asteroids}"
             tools:itemCount="16"
             tools:listitem="@layout/asteroid_item" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

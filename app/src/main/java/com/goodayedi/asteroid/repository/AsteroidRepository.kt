@@ -1,6 +1,7 @@
 package com.goodayedi.asteroid.repository
 
 import com.goodayedi.asteroid.domain.Asteroid
+import com.goodayedi.asteroid.domain.PictureOfTheDay
 import com.goodayedi.asteroid.network.Nasa
 import org.json.JSONObject
 
@@ -46,6 +47,9 @@ class AsteroidRepository {
             }
         }
         return asteroidList
+    }
+    suspend fun getPictureOfTheDay(): PictureOfTheDay {
+        return Nasa.api.getPictureOfTheDay()
     }
 }
 
