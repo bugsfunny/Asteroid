@@ -11,20 +11,13 @@ import kotlinx.coroutines.launch
 
 class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): ViewModel() {
 
-    private var _asteroids = MutableLiveData<ArrayList<Asteroid>>()
-    val asteroids: LiveData<ArrayList<Asteroid>> get() = _asteroids
+    val asteroids: LiveData<ArrayList<Asteroid>> = asteroidRepository.asteroids
     private var _pictureOfTheDay = MutableLiveData<PictureOfTheDay>()
     val pictureOfTheDay: LiveData<PictureOfTheDay> get() = _pictureOfTheDay
     init {
-        getAsteroidList()
         getPictureOfTheDay()
     }
 
-    private fun getAsteroidList() {
-        viewModelScope.launch {
-            _asteroids.value = asteroidRepository.getAsteroids()
-        }
-    }
     private fun getPictureOfTheDay() {
         viewModelScope.launch {
             _pictureOfTheDay.value = asteroidRepository.getPictureOfTheDay()

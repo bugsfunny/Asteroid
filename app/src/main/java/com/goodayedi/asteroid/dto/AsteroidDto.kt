@@ -18,7 +18,7 @@ fun List<Asteroid>.asDatabaseAsteroid(): Array<AsteroidEntity> {
     }.toTypedArray()
 }
 
-fun List<AsteroidEntity>.asDomainModel(): List<Asteroid> {
+fun List<AsteroidEntity>.asDomainModel(): ArrayList<Asteroid> {
     return map {
         Asteroid(
             id = it.id,
@@ -30,5 +30,5 @@ fun List<AsteroidEntity>.asDomainModel(): List<Asteroid> {
             relative_velocity = it.relative_velocity,
             miss_distance = it.miss_distance,
         )
-    }
+    } as ArrayList<Asteroid>
 }
