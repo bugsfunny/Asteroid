@@ -8,7 +8,6 @@ fun List<Asteroid>.asDatabaseAsteroid(): Array<AsteroidEntity> {
         AsteroidEntity(
             id = it.id,
             name = it.name,
-            imgUrl = it.imgUrl,
             absolute_magnitude = it.absolute_magnitude,
             estimated_diameter_max = it.estimated_diameter_max,
             is_potentially_hazardous_asteroid = it.is_potentially_hazardous_asteroid,
@@ -24,7 +23,6 @@ fun List<AsteroidEntity>.asDomainModel(): List<Asteroid> {
         Asteroid(
             id = it.id,
             name = it.name,
-            imgUrl = it.imgUrl,
             absolute_magnitude = it.absolute_magnitude,
             estimated_diameter_max = it.estimated_diameter_max,
             is_potentially_hazardous_asteroid = it.is_potentially_hazardous_asteroid,

@@ -4,13 +4,16 @@ import com.goodayedi.asteroid.database.AsteroidDatabase
 import com.goodayedi.asteroid.model.Asteroid
 import com.goodayedi.asteroid.model.PictureOfTheDay
 import com.goodayedi.asteroid.network.Nasa
+import com.goodayedi.asteroid.utils.getNextSevenDaysFormattedDates
 import com.goodayedi.asteroid.utils.parseAsteroid
 import org.json.JSONObject
 import timber.log.Timber
 
 class AsteroidRepository(private val database: AsteroidDatabase) {
+    val nextsevendays = getNextSevenDaysFormattedDates()
+    val today = nextsevendays.first()
     suspend fun getAsteroids(): ArrayList<Asteroid> {
-        val response = Nasa.api.getAsteroids()
+        val response = Nasa.api.getAsteroids(today)
         return parseAsteroid(response)
     }
     suspend fun getPictureOfTheDay(): PictureOfTheDay {

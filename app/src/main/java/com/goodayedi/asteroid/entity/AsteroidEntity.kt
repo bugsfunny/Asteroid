@@ -8,7 +8,6 @@ data class AsteroidEntity(
     @PrimaryKey
     val id: Long,
     val name: String,
-    val imgUrl: String,
     val absolute_magnitude: Double,
     val estimated_diameter_max: Double,
     val is_potentially_hazardous_asteroid: Boolean,
