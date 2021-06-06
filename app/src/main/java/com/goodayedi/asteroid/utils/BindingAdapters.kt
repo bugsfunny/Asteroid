@@ -4,8 +4,8 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.goodayedi.asteroid.R
-import com.goodayedi.asteroid.domain.Asteroid
-import com.goodayedi.asteroid.domain.PictureOfTheDay
+import com.goodayedi.asteroid.model.Asteroid
+import com.goodayedi.asteroid.model.PictureOfTheDay
 import com.goodayedi.asteroid.ui.AsteroidAdapter
 import com.squareup.picasso.Picasso
 

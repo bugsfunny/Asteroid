@@ -1,7 +1,7 @@
 package com.goodayedi.asteroid.network
 
 import com.goodayedi.asteroid.BuildConfig
-import com.goodayedi.asteroid.domain.PictureOfTheDay
+import com.goodayedi.asteroid.model.PictureOfTheDay
 import retrofit2.Retrofit
 import retrofit2.http.GET
 

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.goodayedi.asteroid.ui.AsteroidViewModel" />
+            type="com.goodayedi.asteroid.viewmodel.AsteroidViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

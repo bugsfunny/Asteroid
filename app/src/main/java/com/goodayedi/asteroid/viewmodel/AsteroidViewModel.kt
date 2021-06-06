@@ -1,16 +1,16 @@
-package com.goodayedi.asteroid.ui
+package com.goodayedi.asteroid.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.goodayedi.asteroid.domain.Asteroid
-import com.goodayedi.asteroid.domain.PictureOfTheDay
-import com.goodayedi.asteroid.repository.asteroidRepository
+import com.goodayedi.asteroid.model.Asteroid
+import com.goodayedi.asteroid.model.PictureOfTheDay
+import com.goodayedi.asteroid.repository.AsteroidRepository
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
-class AsteroidViewModel: ViewModel() {
+class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): ViewModel() {
+
     private var _asteroids = MutableLiveData<ArrayList<Asteroid>>()
     val asteroids: LiveData<ArrayList<Asteroid>> get() = _asteroids
     private var _pictureOfTheDay = MutableLiveData<PictureOfTheDay>()

@@ -1,4 +1,4 @@
-package com.goodayedi.asteroid.domain
+package com.goodayedi.asteroid.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
