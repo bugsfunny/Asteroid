@@ -16,6 +16,9 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): Vie
     val pictureOfTheDay: LiveData<PictureOfTheDay> get() = _pictureOfTheDay
     init {
         getPictureOfTheDay()
+        viewModelScope.launch {
+            asteroidRepository.refreshAsteroids()
+        }
     }
 
     private fun getPictureOfTheDay() {

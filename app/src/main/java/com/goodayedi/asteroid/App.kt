@@ -10,12 +10,13 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-class App: Application(){
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         delayedInit()
     }
+
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 
     private fun delayedInit() {
@@ -27,7 +28,7 @@ class App: Application(){
 
     private fun setupRecurringWork() {
         val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiredNetworkType(NetworkType.UNMETERED)
             .setRequiresBatteryNotLow(true)
             .setRequiresCharging(true)
             .apply {
@@ -36,14 +37,16 @@ class App: Application(){
                 }
             }.build()
 
-        val repeatingRequest
-                = PeriodicWorkRequestBuilder<RefreshDataWorker>(1, TimeUnit.DAYS)
+        val repeatingRequest = PeriodicWorkRequestBuilder<RefreshDataWorker>(
+            1, TimeUnit.DAYS
+        )
             .setConstraints(constraints)
             .build()
 
         WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
             RefreshDataWorker.WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP,
-            repeatingRequest)
+            repeatingRequest
+        )
     }
 }

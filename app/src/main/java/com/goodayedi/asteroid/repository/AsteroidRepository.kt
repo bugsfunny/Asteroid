@@ -30,7 +30,6 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
     suspend fun refreshAsteroids() {
         withContext(Dispatchers.IO) {
             val fromApiAsteroids = Nasa.api.getAsteroids(today)
-            Timber.i("HELLO : $today")
             val asteroids = parseAsteroid(fromApiAsteroids)
             database.asteroidDao.insertAll(*asteroids.asDatabaseAsteroid())
         }
