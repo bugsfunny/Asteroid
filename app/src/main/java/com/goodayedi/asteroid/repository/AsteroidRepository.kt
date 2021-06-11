@@ -12,8 +12,6 @@ import com.goodayedi.asteroid.utils.getNextSevenDaysFormattedDates
 import com.goodayedi.asteroid.utils.parseAsteroid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import timber.log.Timber
 
 class AsteroidRepository(private val database: AsteroidDatabase) {
     private val nextSevenDays = getNextSevenDaysFormattedDates()

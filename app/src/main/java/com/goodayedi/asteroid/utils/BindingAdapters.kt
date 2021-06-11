@@ -24,6 +24,15 @@ fun loadImage(imageView: ImageView, hazardous: Boolean){
     }
 }
 
+@BindingAdapter("asteroidStatusImage")
+fun loadStatusImage(imageView: ImageView, hazardous: Boolean){
+    if (hazardous){
+        imageView.setImageResource(R.drawable.asteroid_hazardous)
+    } else {
+        imageView.setImageResource(R.drawable.asteroid_safe)
+    }
+}
+
 @BindingAdapter("pictureOfTheDay")
 fun loadPictureOfTheDay(imageView: ImageView, picture: PictureOfTheDay?) {
     picture?.let {

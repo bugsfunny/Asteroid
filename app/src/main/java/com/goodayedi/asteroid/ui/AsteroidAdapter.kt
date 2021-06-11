@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.goodayedi.asteroid.databinding.AsteroidItemBinding
 import com.goodayedi.asteroid.model.Asteroid
 
-class AsteroidAdapter : ListAdapter<Asteroid, AsteroidAdapter.ViewHolder>(DiffCallback) {
+class AsteroidAdapter(private val onItemClicked: (Asteroid) -> Unit) :
+    ListAdapter<Asteroid, AsteroidAdapter.ViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Asteroid>() {
         override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
@@ -40,6 +41,9 @@ class AsteroidAdapter : ListAdapter<Asteroid, AsteroidAdapter.ViewHolder>(DiffCa
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val asteroid = getItem(position)
+        holder.itemView.setOnClickListener {
+            onItemClicked(asteroid)
+        }
         holder.bind(asteroid)
     }
 

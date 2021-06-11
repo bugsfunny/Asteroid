@@ -12,6 +12,12 @@ import kotlinx.coroutines.launch
 class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): ViewModel() {
 
     val asteroids: LiveData<ArrayList<Asteroid>> = asteroidRepository.asteroids
+
+    private val _navigateToSelectedProperty = MutableLiveData<Asteroid?>()
+
+    val navigateToSelectedProperty: LiveData<Asteroid?>
+        get() = _navigateToSelectedProperty
+
     private var _pictureOfTheDay = MutableLiveData<PictureOfTheDay>()
     val pictureOfTheDay: LiveData<PictureOfTheDay> get() = _pictureOfTheDay
     init {
@@ -25,5 +31,13 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): Vie
         viewModelScope.launch {
             _pictureOfTheDay.value = asteroidRepository.getPictureOfTheDay()
         }
+    }
+
+    fun displayPropertyDetails(asteroid: Asteroid) {
+        _navigateToSelectedProperty.value = asteroid
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
     }
 }

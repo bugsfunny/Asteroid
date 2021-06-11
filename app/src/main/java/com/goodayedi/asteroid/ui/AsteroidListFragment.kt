@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.goodayedi.asteroid.database.AsteroidDatabase
 import com.goodayedi.asteroid.database.getDatabase
 import com.goodayedi.asteroid.databinding.FragmentAsteroidListBinding
@@ -32,7 +33,19 @@ class AsteroidListFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory).get(AsteroidViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.asteroidList.adapter = AsteroidAdapter()
+
+        binding.asteroidList.adapter = AsteroidAdapter() {
+            viewModel.displayPropertyDetails(it)
+        }
+
+        viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner) {
+            if (it != null) {
+                this.findNavController()
+                    .navigate(AsteroidListFragmentDirections
+                        .actionAsteroidListFragmentToAsteroidDetailFragment(it))
+                viewModel.displayPropertyDetailsComplete()
+            }
+        }
         return binding.root
     }
 }

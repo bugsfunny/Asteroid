@@ -2,4 +2,12 @@
     <string name="app_name">Asteroid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="asteroid_status_image">asteroid status image</string>
+    <string name="close_approach_date">Close approach date</string>
+    <string name="absolute_magnitude">Absolute magnitude</string>
+    <string name="help_info_icon">help info icon</string>
+    <string name="estimated_diameter">Estimated diameter</string>
+    <string name="distance_from_earth">Distance from earth</string>
+    <string name="hazardous_text">Potentially Hazardous</string>
+    <string name="not_hazardous_text">Not Hazardous</string>
 </resources>

@@ -18,5 +18,9 @@
         android:id="@+id/asteroidDetailFragment"
         android:name="com.goodayedi.asteroid.ui.AsteroidDetailFragment"
         android:label="fragment_asteroid_detail"
-        tools:layout="@layout/fragment_asteroid_detail" />
+        tools:layout="@layout/fragment_asteroid_detail" >
+        <argument
+            android:name="asteroid"
+            app:argType="com.goodayedi.asteroid.model.Asteroid" />
+    </fragment>
 </navigation>
