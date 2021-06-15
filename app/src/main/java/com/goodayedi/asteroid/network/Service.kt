@@ -2,7 +2,6 @@ package com.goodayedi.asteroid.network
 
 import com.goodayedi.asteroid.BuildConfig
 import com.goodayedi.asteroid.model.PictureOfTheDay
-import com.goodayedi.asteroid.utils.getNextSevenDaysFormattedDates
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

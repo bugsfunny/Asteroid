@@ -8,28 +8,31 @@ import com.goodayedi.asteroid.model.Asteroid
 import com.goodayedi.asteroid.model.PictureOfTheDay
 import com.goodayedi.asteroid.repository.AsteroidRepository
 import kotlinx.coroutines.launch
+import java.lang.Exception
+
+enum class NasaApiStatus { LOADING, ERROR, DONE}
 
 class AsteroidViewModel(private val asteroidRepository: AsteroidRepository): ViewModel() {
 
     val asteroids: LiveData<ArrayList<Asteroid>> = asteroidRepository.asteroids
+    val pictureOfTheDay: LiveData<PictureOfTheDay> = asteroidRepository.pictureOfTheDay
 
     private val _navigateToSelectedProperty = MutableLiveData<Asteroid?>()
-
     val navigateToSelectedProperty: LiveData<Asteroid?>
         get() = _navigateToSelectedProperty
 
-    private var _pictureOfTheDay = MutableLiveData<PictureOfTheDay>()
-    val pictureOfTheDay: LiveData<PictureOfTheDay> get() = _pictureOfTheDay
-    init {
-        getPictureOfTheDay()
-        viewModelScope.launch {
-            asteroidRepository.refreshAsteroids()
-        }
-    }
+    private val _status = MutableLiveData<NasaApiStatus>()
+    val status: LiveData<NasaApiStatus> get() = _status
 
-    private fun getPictureOfTheDay() {
+    init {
         viewModelScope.launch {
-            _pictureOfTheDay.value = asteroidRepository.getPictureOfTheDay()
+            _status.value = NasaApiStatus.LOADING
+            try {
+                asteroidRepository.refreshData()
+                _status.value = NasaApiStatus.DONE
+            } catch (e: Exception){
+                _status.value = NasaApiStatus.ERROR
+            }
         }
     }
 

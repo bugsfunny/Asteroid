@@ -3,11 +3,12 @@ package com.goodayedi.asteroid.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.goodayedi.asteroid.database.AsteroidDatabase
-import com.goodayedi.asteroid.dto.asDatabaseAsteroid
+import com.goodayedi.asteroid.dto.asDatabaseModel
 import com.goodayedi.asteroid.dto.asDomainModel
 import com.goodayedi.asteroid.model.Asteroid
 import com.goodayedi.asteroid.model.PictureOfTheDay
 import com.goodayedi.asteroid.network.Nasa
+import com.goodayedi.asteroid.utils.SharedPref
 import com.goodayedi.asteroid.utils.getNextSevenDaysFormattedDates
 import com.goodayedi.asteroid.utils.parseAsteroid
 import kotlinx.coroutines.Dispatchers
@@ -20,16 +21,22 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
         Transformations.map(database.asteroidDao.getAsteroids()) {
             it.asDomainModel()
         }
+    val pictureOfTheDay: LiveData<PictureOfTheDay> =
+        Transformations.map(database.pictureOfTheDayDao.getPictureOfTheDay()) {
+            it?.asDomainModel()
+        }
 
-    suspend fun getPictureOfTheDay(): PictureOfTheDay {
-        return Nasa.api.getPictureOfTheDay()
-    }
-
-    suspend fun refreshAsteroids() {
+    suspend fun refreshData() {
         withContext(Dispatchers.IO) {
-            val fromApiAsteroids = Nasa.api.getAsteroids(today)
-            val asteroids = parseAsteroid(fromApiAsteroids)
-            database.asteroidDao.insertAll(*asteroids.asDatabaseAsteroid())
+            val lastSave = SharedPref.read("last", "0")
+            if (today != lastSave) {
+                val fromApiAsteroids = Nasa.api.getAsteroids(today)
+                val asteroids = parseAsteroid(fromApiAsteroids)
+                database.asteroidDao.insertAll(*asteroids.asDatabaseModel())
+                val pictureOfTheDay = Nasa.api.getPictureOfTheDay()
+                database.pictureOfTheDayDao.insert(pictureOfTheDay.asDatabaseModel())
+                SharedPref.write("last", today)
+            }
         }
     }
 }

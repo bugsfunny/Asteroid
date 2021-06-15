@@ -11,9 +11,9 @@
     </data>
 
     <ScrollView
-        android:background="#111111"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#111111">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,12 +24,12 @@
                 android:id="@+id/main_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".45"
                 android:layout_marginTop="8dp"
                 android:contentDescription="@string/asteroid_status_image"
                 android:scaleType="centerCrop"
                 app:asteroidStatusImage="@{viewModel.selectedProperty._potentially_hazardous_asteroid}"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
@@ -69,12 +69,13 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
+                android:text="@{viewModel.selectedProperty.close_approach_date}"
                 android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/closeApproachDate_tv"
-                tools:text="@{viewModel.selectedProperty.close_approach_date}" />
+                tools:text="2021-06-10" />
 
             <TextView
                 android:id="@+id/absMagnitude_tv"
@@ -98,11 +99,11 @@
                 android:paddingRight="8dp"
                 android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
-                app:text="@{String.valueOf(viewModel.selectedProperty.absolute_magnitude)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/absMagnitude_tv"
-                tools:text="16.480000" />
+                app:text='@{String.valueOf(viewModel.selectedProperty.absolute_magnitude) + " au"}'
+                tools:text="16.480000 au" />
 
             <ImageView
                 android:id="@+id/help_iv"
@@ -138,10 +139,10 @@
                 android:paddingRight="8dp"
                 android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
-                app:text="@{String.valueOf(viewModel.selectedProperty.estimated_diameter_max)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/estDiaMax_tv"
+                app:text='@{String.valueOf(viewModel.selectedProperty.estimated_diameter_max) + " km"}'
                 tools:text="3.0063530383 km" />
 
             <TextView
@@ -151,7 +152,7 @@
                 android:layout_marginTop="8dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:text="Relative velocity"
+                android:text="@string/relative_velocity"
                 android:textColor="#e5e5e5"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +170,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeVelocity_tv"
-                app:text="@{String.valueOf(viewModel.selectedProperty.relative_velocity)}"
+                app:text='@{String.valueOf(viewModel.selectedProperty.relative_velocity) + " km/s"}'
                 tools:text="14.77157427 km/s" />
 
             <TextView
@@ -194,11 +195,11 @@
                 android:paddingRight="8dp"
                 android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
-                app:text="@{String.valueOf(viewModel.selectedProperty.miss_distance)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distanceFromEarth_tv"
-                tools:text="0.49229903 km" />
+                app:text='@{String.valueOf(viewModel.selectedProperty.miss_distance) + " au"}'
+                tools:text="0.49229903 au" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

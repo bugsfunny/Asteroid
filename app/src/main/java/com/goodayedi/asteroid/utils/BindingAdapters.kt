@@ -1,5 +1,6 @@
 package com.goodayedi.asteroid.utils
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,7 @@ import com.goodayedi.asteroid.R
 import com.goodayedi.asteroid.model.Asteroid
 import com.goodayedi.asteroid.model.PictureOfTheDay
 import com.goodayedi.asteroid.ui.AsteroidAdapter
+import com.goodayedi.asteroid.viewmodel.NasaApiStatus
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("listData")
@@ -16,8 +18,8 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
 }
 
 @BindingAdapter("hazardousImg")
-fun loadImage(imageView: ImageView, hazardous: Boolean){
-    if (hazardous){
+fun loadImage(imageView: ImageView, hazardous: Boolean) {
+    if (hazardous) {
         imageView.setImageResource(R.drawable.ic_status_potentially_hazardous)
     } else {
         imageView.setImageResource(R.drawable.ic_status_normal)
@@ -25,8 +27,8 @@ fun loadImage(imageView: ImageView, hazardous: Boolean){
 }
 
 @BindingAdapter("asteroidStatusImage")
-fun loadStatusImage(imageView: ImageView, hazardous: Boolean){
-    if (hazardous){
+fun loadStatusImage(imageView: ImageView, hazardous: Boolean) {
+    if (hazardous) {
         imageView.setImageResource(R.drawable.asteroid_hazardous)
     } else {
         imageView.setImageResource(R.drawable.asteroid_safe)
@@ -43,4 +45,21 @@ fun loadPictureOfTheDay(imageView: ImageView, picture: PictureOfTheDay?) {
         }
     }
 
+}
+
+@BindingAdapter("nasaApiStatus")
+fun bindStatus(statusImageView: ImageView, status: NasaApiStatus){
+    when(status){
+        NasaApiStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        NasaApiStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        NasaApiStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
 }

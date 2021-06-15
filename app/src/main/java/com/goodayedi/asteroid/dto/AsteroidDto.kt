@@ -3,7 +3,7 @@ package com.goodayedi.asteroid.dto
 import com.goodayedi.asteroid.entity.AsteroidEntity
 import com.goodayedi.asteroid.model.Asteroid
 
-fun List<Asteroid>.asDatabaseAsteroid(): Array<AsteroidEntity> {
+fun List<Asteroid>.asDatabaseModel(): Array<AsteroidEntity> {
     return map {
         AsteroidEntity(
             id = it.id,

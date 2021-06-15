@@ -3,6 +3,7 @@ package com.goodayedi.asteroid
 import android.app.Application
 import android.os.Build
 import androidx.work.*
+import com.goodayedi.asteroid.utils.SharedPref
 import com.goodayedi.asteroid.work.RefreshDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,9 +12,11 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
+
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        SharedPref.init(this)
         delayedInit()
     }
 

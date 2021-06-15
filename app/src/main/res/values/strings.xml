@@ -10,4 +10,5 @@
     <string name="distance_from_earth">Distance from earth</string>
     <string name="hazardous_text">Potentially Hazardous</string>
     <string name="not_hazardous_text">Not Hazardous</string>
+    <string name="relative_velocity">Relative velocity</string>
 </resources>
