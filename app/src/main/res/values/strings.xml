@@ -11,4 +11,7 @@
     <string name="hazardous_text">Potentially Hazardous</string>
     <string name="not_hazardous_text">Not Hazardous</string>
     <string name="relative_velocity">Relative velocity</string>
+    <string name="hazardous_icon">hazardous icon</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="status_loader">Status loader</string>
 </resources>
