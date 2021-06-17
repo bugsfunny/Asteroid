@@ -13,7 +13,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
-        tools:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -22,7 +21,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{asteroid.name}"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/textview_asteroid_date"
             app:layout_constraintEnd_toStartOf="@+id/imageview_asteroid_hazardous"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +32,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{asteroid.close_approach_date}"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textview_asteroid_name"
             app:layout_constraintStart_toStartOf="@+id/textview_asteroid_name"
@@ -52,7 +49,7 @@
             app:layout_constraintTop_toTopOf="@id/textview_asteroid_name"
             tools:src="@drawable/ic_status_normal" />
         <View
-            android:background="@color/white"
+            style="@style/divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

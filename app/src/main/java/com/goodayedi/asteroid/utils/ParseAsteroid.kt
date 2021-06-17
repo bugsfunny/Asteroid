@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-const val API_QUERY_DATE_FORMAT = "YYYY-MM-dd"
+const val API_QUERY_DATE_FORMAT = "yyyy-MM-dd"
 const val DEFAULT_END_DATE_DAYS = 7
 
 fun parseAsteroid(response: String): ArrayList<Asteroid> {

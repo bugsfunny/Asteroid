@@ -14,4 +14,5 @@
     <string name="hazardous_icon">hazardous icon</string>
     <string name="picture_of_the_day">Picture of the day</string>
     <string name="status_loader">Status loader</string>
+    <string name="astronomica_unit_explanation">The astronomical unit (au) is a unit of length, roughly the distance from earth to the sun and equal to about 150 million kilometres (93 million miles)</string>
 </resources>

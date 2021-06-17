@@ -13,18 +13,16 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#111111">
+        android:background="?attr/colorPrimary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/main_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:contentDescription="@string/asteroid_status_image"
                 android:scaleType="centerCrop"
                 app:asteroidStatusImage="@{viewModel.selectedProperty._potentially_hazardous_asteroid}"
@@ -41,7 +39,6 @@
                 android:layout_marginTop="8dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textColor="#f5f5f5"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 android:text="@{viewModel.selectedProperty.name}"
@@ -51,27 +48,17 @@
                 tools:text="ASTEROID-56" />
 
             <TextView
+                style="@style/detail_label"
                 android:id="@+id/closeApproachDate_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/close_approach_date"
-                android:textColor="#e5e5e5"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/codename_tv" />
 
             <TextView
+                style="@style/detail_content"
                 android:id="@+id/closeApproachDateValue_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@{viewModel.selectedProperty.close_approach_date}"
-                android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,26 +66,16 @@
                 tools:text="2021-06-10" />
 
             <TextView
+                style="@style/detail_label"
                 android:id="@+id/absMagnitude_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/absolute_magnitude"
-                android:textColor="#e5e5e5"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/closeApproachDateValue_tv" />
 
             <TextView
+                style="@style/detail_content"
                 android:id="@+id/absMagnitudeValue_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,38 +84,30 @@
                 tools:text="16.480000 au" />
 
             <ImageView
-                android:id="@+id/help_iv"
+                style="@style/help"
+                android:id="@+id/help_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/help_info_icon"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/absMagnitudeValue_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/absMagnitude_tv"
                 app:srcCompat="@drawable/ic_help" />
 
             <TextView
+                style="@style/detail_label"
                 android:id="@+id/estDiaMax_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/estimated_diameter"
-                android:textColor="#e5e5e5"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/absMagnitudeValue_tv" />
 
             <TextView
+                style="@style/detail_content"
                 android:id="@+id/estDiaMaxValue_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -147,26 +116,16 @@
                 tools:text="3.0063530383 km" />
 
             <TextView
+                style="@style/detail_label"
                 android:id="@+id/relativeVelocity_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/relative_velocity"
-                android:textColor="#e5e5e5"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/estDiaMaxValue_tv" />
 
             <TextView
+                style="@style/detail_content"
                 android:id="@+id/relativeVelocityValue_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,26 +134,16 @@
                 tools:text="14.77157427 km/s" />
 
             <TextView
+                style="@style/detail_label"
                 android:id="@+id/distanceFromEarth_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/distance_from_earth"
-                android:textColor="#e5e5e5"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeVelocityValue_tv" />
 
             <TextView
+                style="@style/detail_content"
                 android:id="@+id/distanceFromEarthValue_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColor="#f9f9f9"
                 android:textSize="16.5sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

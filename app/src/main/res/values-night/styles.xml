@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="divider">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="help">
+        <item name="tint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
